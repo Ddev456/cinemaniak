@@ -1,17 +1,28 @@
 "use client";
 
-import Link from "next/link";
+import { Input } from "@/components/ui/input";
 import {
+  NavigationMenu,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenu,
 } from "@/components/ui/navigation-menu";
+import Link from "next/link";
+import React from "react";
 import { Hero } from "./Hero";
 
 export default function HomeComponent({ movies }: any) {
+  const [searchValue, setSearchValue] = React.useState("");
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(event.target.value);
+  };
+  console.log(movies.results);
+
+  const filteredMovies = movies.results.filter((movie: any) =>
+    movie.title.toLowerCase().includes(searchValue.toLowerCase())
+  );
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="flex h-20 w-full items-center px-4 md:px-6">
+      <header className="bg-slate-50 top-0 sticky z-10 flex h-20 w-full items-center px-4 md:px-6">
         <Link className="mr-6" href="#">
           <MountainIcon className="h-6 w-6" />
           <span className="sr-only">Cinema App</span>
@@ -50,11 +61,17 @@ export default function HomeComponent({ movies }: any) {
                 About Us
               </Link>
             </NavigationMenuLink>
+            <Input
+              className="z-10 top-0 sticky p-6 bg-indigo-50"
+              type="search"
+              placeholder="Rechercher un film .."
+              onChange={handleSearchChange}
+            />
           </NavigationMenuList>
         </NavigationMenu>
       </header>
       <main className="flex-1">
-        <Hero initialMovies={movies} />
+        <Hero initialMovies={filteredMovies} />
         {/* <section className="relative w-full py-6 sm:py-12 md:py-24 lg:py-32 xl:py-48 bg-gray-200 bg-image">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center space-y-4 text-center">

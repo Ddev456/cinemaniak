@@ -1,14 +1,14 @@
 "use client";
-import React from "react";
 import {
+  MotionValue,
   motion,
   useScroll,
-  useTransform,
   useSpring,
-  MotionValue,
+  useTransform,
 } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 
 export const HeroParallax = ({
   movies,
@@ -69,7 +69,7 @@ export const HeroParallax = ({
         }}
         className=""
       >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20 justify-center ">
           {firstRow.map((product) => (
             <ProductCard
               product={product}
@@ -78,7 +78,7 @@ export const HeroParallax = ({
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row  mb-20 space-x-20 ">
+        <motion.div className="flex flex-row  mb-20 space-x-20 justify-center">
           {secondRow.map((product) => (
             <ProductCard
               product={product}
@@ -87,7 +87,7 @@ export const HeroParallax = ({
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20">
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 justify-center">
           {thirdRow.map((product) => (
             <ProductCard
               product={product}
