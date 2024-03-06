@@ -1,8 +1,9 @@
 import { MovieSheet } from "@/app/components/MovieSheet";
-import { getFilms } from "../data/getMovies";
+import { getMovies } from "@/app/page";
 
 export default async function movieSheetPage() {
-  const movies = await getFilms();
+  const movies = await getMovies();
+  console.log(movies);
 
-  return <MovieSheet movies={movies.data} />;
+  return <MovieSheet movies={movies.results} />;
 }

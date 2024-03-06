@@ -6,7 +6,7 @@ export function Hero({ initialMovies }: any) {
   const moviesList = initialMovies.map((movie: any) => {
     return {
       title: movie.title,
-      link: "#",
+      link: `/fiches/${movie.id}`,
       thumbnail: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
     };
   });

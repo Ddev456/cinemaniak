@@ -1,4 +1,3 @@
-import { cp } from "fs";
 import HomeComponent from "./components/Home";
 
 const options = {
@@ -9,7 +8,7 @@ const options = {
   },
 };
 
-const getMovies = async () => {
+export const getMovies = async () => {
   const res = await fetch(
     "https://api.themoviedb.org/3/movie/top_rated?language=fr-FR&page=1&region=fr",
     options
